@@ -1,9 +1,43 @@
 ---
 name: boohee-shared
-description: Boohee CLI 共享基础：认证前置条件、输出格式、Scope 体系、AI Agent 登录流程。所有其他 boohee-* skill 的基础参考。
+description: Boohee CLI 共享基础：安装检测与引导、认证前置条件、输出格式、Scope 体系、AI Agent 登录流程。所有其他 boohee-* skill 的基础参考。
 ---
 
 # Boohee CLI 共享基础
+
+## 安装检测（每次执行命令前必须先做）
+
+在执行任何 `boohee-cli` 命令前，先检查 CLI 是否可用：
+
+```bash
+boohee-cli --version
+```
+
+### CLI 未安装
+
+如果命令不存在（`command not found`），告知用户并引导安装：
+
+> `boohee-cli` 尚未安装，请运行以下命令安装：
+>
+> ```bash
+> npm install -g @openote101/boohee-cli
+> ```
+>
+> 安装完成后重试。
+
+安装后重新执行原命令。
+
+### Skills 未安装
+
+如果 AI 无法读取到 boohee-* skill（如本文件），说明 skill 尚未添加，引导用户安装：
+
+> Boohee skills 尚未安装，请运行以下命令添加：
+>
+> ```bash
+> npx skills add openexw/boohee-cli -y -g
+> ```
+>
+> 安装完成后重试。
 
 ## 认证前置
 
