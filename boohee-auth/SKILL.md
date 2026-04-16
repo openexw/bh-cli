@@ -19,7 +19,7 @@ description: 管理 Boohee 认证：登录（Device Flow）、查看授权状态
 ### `auth login` — 登录
 
 ```
-boohee-cli auth login [flags]
+bh-cli auth login [flags]
 ```
 
 | Flag | 说明 | 默认值 |
@@ -33,24 +33,24 @@ boohee-cli auth login [flags]
 
 **交互式登录**（终端）：
 ```bash
-boohee-cli auth login
+bh-cli auth login
 # 弹出选择界面，选择授权应用和权限范围
 # 打开浏览器 URL 完成授权
 ```
 
 **指定 scope 登录**（跳过交互）：
 ```bash
-boohee-cli auth login --scope "weight.read weight.write"
+bh-cli auth login --scope "weight.read weight.write"
 ```
 
 **AI Agent 两阶段登录**：
 ```bash
 # Step 1：发起授权
-boohee-cli auth login --no-wait --format json --scope "weight.read weight.write"
+bh-cli auth login --no-wait --format json --scope "weight.read weight.write"
 # 输出 device_code 和 verification_uri_complete，让用户在浏览器打开 URL
 
 # Step 2：用户授权后恢复
-boohee-cli auth login --device-code <device_code>
+bh-cli auth login --device-code <device_code>
 ```
 
 成功后输出（`--format json`）：
@@ -67,7 +67,7 @@ boohee-cli auth login --device-code <device_code>
 ### `auth status` — 查看授权状态
 
 ```
-boohee-cli auth status
+bh-cli auth status
 ```
 
 输出（JSON）：
@@ -93,10 +93,10 @@ boohee-cli auth status
 ### `auth logout` — 登出
 
 ```
-boohee-cli auth logout
+bh-cli auth logout
 ```
 
-清除本地存储的 token（`~/.boohee-cli/token.json`）。  
+清除本地存储的 token（`~/.bh-cli/token.json`）。  
 不会向服务端发送撤销请求，只删除本地文件。
 
 ---
@@ -105,14 +105,14 @@ boohee-cli auth logout
 
 **检查是否已登录，未登录则提示用户**：
 ```bash
-STATUS=$(boohee-cli auth status | jq -r '.status')
+STATUS=$(bh-cli auth status | jq -r '.status')
 if [ "$STATUS" != "authorized" ]; then
-  echo "请先登录：boohee-cli auth login --scope 'weight.read'"
+  echo "请先登录：bh-cli auth login --scope 'weight.read'"
 fi
 ```
 
 **切换账号**：
 ```bash
-boohee-cli auth logout
-boohee-cli auth login --scope "weight.read weight.write"
+bh-cli auth logout
+bh-cli auth login --scope "weight.read weight.write"
 ```
