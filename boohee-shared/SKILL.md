@@ -20,7 +20,7 @@ bh-cli --version
 > `bh-cli` 尚未安装，请运行以下命令安装：
 >
 > ```bash
-> npm install -g @openote101/bh-cli
+> npm install -g @boohee101/bh-cli
 > ```
 >
 > 安装完成后重试。
