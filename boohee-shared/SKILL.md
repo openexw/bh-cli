@@ -34,7 +34,7 @@ bh-cli --version
 > Boohee skills 尚未安装，请运行以下命令添加：
 >
 > ```bash
-> npx skills add openexw/bh-cli -y -g
+> npx skills add openexw/boohee-cli -y -g
 > ```
 >
 > 安装完成后重试。
