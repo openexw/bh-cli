@@ -2,6 +2,12 @@
 
 这个仓库用于公开维护 `skills` 与 `bh-cli` 的使用说明。
 
+## 同步说明
+
+- 本仓库仅用于公开内容同步，不包含私有项目源码。
+- 当前同步范围：`skills/` 目录与仓库根 `README.md`。
+- 同步命令：`make sync-skills`。
+
 ## skills
 
 当前 skills 目录结构：
